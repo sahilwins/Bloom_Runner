@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView,Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Homescreen from '../TabsScreen/Homescreen';
 import Profilescreen from '../TabsScreen/Profilescreen';
@@ -8,25 +8,35 @@ import Screennotification from '../TabsScreen/Screennotification';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
+
 const Tab = createBottomTabNavigator();
 const LogoTitle = ({text}) => {
+  const idea = require('../../assets/logo25.png');
+  
 
   return (
     <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
-        
-      <Text>{text}</Text>
+      <View>
+        <Image source={idea} style={{marginLeft:10 ,}}/>
+        <Text>{text}</Text>
+        </View>
     </SafeAreaView>
   );
 };
 const BottomScreen = () => {
   return (
+    
     <Tab.Navigator
+    
       screenOptions={{
         headerTitle: false,
         headerBackground: props => <LogoTitle {...props} text="" />,
         headerShown: true,
-        title:false
+        title:true
+        
+      
       }}>
+        
       <Tab.Screen
         name="Home"
         component={Homescreen}
