@@ -82,7 +82,9 @@ const Homescreen = () => {
           </Text>
 
           <View style={{flexDirection: 'row', marginTop: 15}}>
-            <SimpleLineIcons name="note" size={13} color={'grey'} />
+            
+              <SimpleLineIcons name="note" size={13} color={'grey'}  />
+            
             <Text
               style={{
                 fontWeight: 'bold',
@@ -217,10 +219,7 @@ const styles = StyleSheet.create({
     width: '10%',
     borderRadius: 5,
     marginRight: 20,
-    // width: wp('94.5%'),
-    //   height: hp('26%'),
-    //   backgroundColor: COLORS.white,
-    //   marginVertical: hp('1%'),
+    
   },
 });
 

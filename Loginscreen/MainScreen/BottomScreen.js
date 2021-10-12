@@ -7,6 +7,7 @@ import Schedule from '../TabsScreen/Schedule.';
 import Screennotification from '../TabsScreen/Screennotification';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Mapp from './Mapp';
 
 
 const Tab = createBottomTabNavigator();
@@ -77,6 +78,7 @@ const BottomScreen = () => {
           ),
         }}
       />
+      {/* <Tab.Screen  name="Mapp" component={Mapp}/> */}
     </Tab.Navigator>
   );
 };

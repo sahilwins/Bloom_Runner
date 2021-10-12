@@ -65,7 +65,7 @@ const Home = ({navigation}) => {
           style={{
             flex: 1,
           }}
-          placeholder="password"
+          placeholder="password" secureTextEntry
         />
         
             <FontAwesome5 name="eye-slash" size={15} color={"grey"}/>
