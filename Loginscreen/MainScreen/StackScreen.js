@@ -4,7 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Home';
 import Forgot from './Forgortpass';
 import BottomScreen from './BottomScreen';
-import Mapp from './Mapp';
+
+import LoginFF from './LoginFF';
 
 const Logo = ({text}) => {
   const pic = require('../../assets/logo.png');
@@ -27,29 +28,11 @@ const FirstScreen = () => {
       screenOptions={({route, navigation}) => ({
         headerShown: false,
         gestureEnabled: true,
-      })}
-      // screenOptions={{
-      //   headerTitle: false,
-      //   headerBackground: props => <Logo {...props} text="" />,
-      //   headerShown: true,
-      //   title:true
-
-      // }}
-    >
+      })}>
       <Stack.Screen component={Home} name="home" />
+
+      <Stack.Screen component={LoginFF} name="LoginFF" />
       <Stack.Screen component={Forgot} name="Forgot" />
-      <Stack.Screen component={BottomScreen} name="BottomScreen" />
-      <Stack.Screen
-        component={Mapp}
-        name="Mapp"
-        options={{
-          headerBackground: props => <Logo {...props} text="" />,
-          headerShown: true,
-          title: true,
-          headerTitle: false,
-          headerLeft: null,
-        }}
-      />
     </Stack.Navigator>
   );
 };

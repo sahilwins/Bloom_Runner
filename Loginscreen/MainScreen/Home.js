@@ -82,14 +82,16 @@ const Home = ({navigation}) => {
           navigation.navigate('Forgot');
         }}
         style={styles.flowfassword}>
+          <View style={{alignItems:'flex-end'}}>
         <Text
-          style={{fontSize: 20, color: 'black', justifyContent: 'flex-end'}}>
+          style={{fontSize: 20, color: 'black',}}>
           Forgot Password
         </Text>
+        </View>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('BottomScreen');
+          navigation.navigate('LoginFF');
         }}
         style={styles.flow}>
         <Text style={{fontSize: 20, color: 'white'}}>login</Text>
@@ -128,5 +130,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     borderRadius: 20,
     height: 40,
+    
   },
 });
