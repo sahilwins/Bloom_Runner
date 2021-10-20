@@ -2,11 +2,12 @@ import React from 'react';
 import {StyleSheet, Text, View, SafeAreaView, Image} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Home';
+import Forgot from './Forgortpass';
 import BottomScreen from './BottomScreen';
 import Mapp from './Mapp';
 
 const Logo = ({text}) => {
-  const pic = require('../../assets/logo25.png');
+  const pic = require('../../assets/logo.png');
 
   return (
     <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
@@ -36,6 +37,7 @@ const FirstScreen = () => {
       // }}
     >
       <Stack.Screen component={Home} name="home" />
+      <Stack.Screen component={Forgot} name="Forgot" />
       <Stack.Screen component={BottomScreen} name="BottomScreen" />
       <Stack.Screen
         component={Mapp}
@@ -45,8 +47,7 @@ const FirstScreen = () => {
           headerShown: true,
           title: true,
           headerTitle: false,
-          headerLeft: null
-        
+          headerLeft: null,
         }}
       />
     </Stack.Navigator>

@@ -11,12 +11,12 @@ import Mapp from './Mapp';
 
 const Tab = createBottomTabNavigator();
 const LogoTitle = ({text}) => {
-  const idea = require('../../assets/logo25.png');
+  const idea = require('../../assets/logo.png');
 
   return (
     <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
       <View>
-        <Image source={idea} style={{marginLeft: 10}} />
+        {/* <Image source={idea} style={{marginLeft: 10}} /> */}
         <Text>{text}</Text>
       </View>
     </SafeAreaView>
@@ -46,7 +46,7 @@ const BottomScreen = () => {
                     // width: 80,
                     // height: 35,
                     borderRadius: 30,
-                    paddingHorizontal:13,
+                    paddingHorizontal: 13,
                     justifyContent: 'center',
                     alignItems: 'center',
                     backgroundColor: 'rgba(109, 243, 200, 0.8)',
@@ -57,7 +57,7 @@ const BottomScreen = () => {
                     color={color}
                     size={size}
                   />
-                  <Text style={{color: 'dodgerblue'}}>home</Text>
+                  <Text style={{color: 'dodgerblue'}}>DashBoard</Text>
                 </View>
               ) : (
                 <MaterialCommunityIcons name="home" color={color} size={size} />
@@ -92,15 +92,12 @@ const BottomScreen = () => {
                     borderRadius: 30,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    paddingHorizontal:13,
+                    paddingHorizontal: 13,
                     backgroundColor: 'rgba(109, 243, 200, 0.8)',
                     flexDirection: 'row',
                   }}>
-                  <Entypo name="clock"
-                    color={color}
-                    size={size}
-                  />
-                  <Text style={{color: 'dodgerblue'}}>schedule</Text>
+                  <Entypo name="clock" color={color} size={size} />
+                  <Text style={{color: 'dodgerblue'}}>Booking</Text>
                 </View>
               ) : (
                 <Entypo name="clock" color={color} size={size} />
@@ -110,12 +107,11 @@ const BottomScreen = () => {
         }}
       />
 
-       <Tab.Screen
+      {/* <Tab.Screen
         name="Notification"
         component={Screennotification}
         options={{
           tabBarLabel: 'Notification',
-          
 
           tabBarIcon: ({color, size, focused}) => (
             <View>
@@ -127,7 +123,7 @@ const BottomScreen = () => {
                     borderRadius: 30,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    paddingHorizontal:13,
+                    paddingHorizontal: 13,
                     backgroundColor: 'rgba(109, 243, 200, 0.8)',
                     flexDirection: 'row',
                   }}>
@@ -136,7 +132,9 @@ const BottomScreen = () => {
                     color={color}
                     size={size}
                   />
-                  <Text style={{color: 'dodgerblue',fontSize:10}}>Notification</Text>
+                  <Text style={{color: 'dodgerblue', fontSize: 10}}>
+                    Notification
+                  </Text>
                 </View>
               ) : (
                 <MaterialCommunityIcons name="bell" color={color} size={size} />
@@ -144,17 +142,8 @@ const BottomScreen = () => {
             </View>
           ),
         }}
-      />
-      {/* <Tab.Screen
-        name="Notification"
-        component={Screennotification}
-        options={{
-          tabBarLabel: 'Notification',
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="bell" size={size} color={color} />
-          ),
-        }}
       /> */}
+
       {/* <Tab.Screen
         name="MyProfile"
         component={Profilescreen}
@@ -165,12 +154,11 @@ const BottomScreen = () => {
           ),
         }}
       /> */}
-      <Tab.Screen
+      {/* <Tab.Screen
         name="MyProfile"
         component={Profilescreen}
         options={{
           tabBarLabel: 'My profile',
-          
 
           tabBarIcon: ({color, size, focused}) => (
             <View>
@@ -182,15 +170,14 @@ const BottomScreen = () => {
                     borderRadius: 30,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    paddingHorizontal:13,
+                    paddingHorizontal: 13,
                     backgroundColor: 'rgba(109, 243, 200, 0.8)',
                     flexDirection: 'row',
                   }}>
-                  <Entypo name="user"
-                    color={color}
-                    size={size}
-                  />
-                  <Text style={{color: 'dodgerblue',fontSize:10}}>MY profile</Text>
+                  <Entypo name="user" color={color} size={size} />
+                  <Text style={{color: 'dodgerblue', fontSize: 10}}>
+                    MY profile
+                  </Text>
                 </View>
               ) : (
                 <Entypo name="user" color={color} size={size} />
@@ -198,9 +185,7 @@ const BottomScreen = () => {
             </View>
           ),
         }}
-      />
-
-      {/* <Tab.Screen  name="Mapp" component={Mapp}/> */}
+      /> */}
     </Tab.Navigator>
   );
 };
