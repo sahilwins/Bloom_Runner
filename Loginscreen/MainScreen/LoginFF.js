@@ -9,8 +9,25 @@ const Drawer = createDrawerNavigator();
 
 const LoginFF = () => {
   return (
-    <Drawer.Navigator drawerContent={props=> <Drawercontent {...props}/>}>
-      <Drawer.Screen name="Profile" component={Profilescreen} />
+    <Drawer.Navigator drawerContent={props => <Drawercontent {...props} />}>
+      <Drawer.Screen
+        name="profile"
+        component={Profilescreen}
+        options={{
+          title: false,
+          headerBackground: props => (
+            <SafeAreaView
+              style={{
+                flex: 1,
+                backgroundColor:'purple',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={{color:'white',fontSize:19,fontWeight:'bold'}}>CMC Patient Portal</Text>
+            </SafeAreaView>
+          ),
+        }}
+      />
       <Drawer.Screen name="Current Bookings" component={Screennotification} />
     </Drawer.Navigator>
   );
