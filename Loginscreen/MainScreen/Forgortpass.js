@@ -73,11 +73,7 @@ const Forgot = ({navigation}) => {
         />
       </View> */}
 
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('BottomScreen')
-        }}
-        style={styles.flow}>
+      <TouchableOpacity style={styles.flow}>
         <Text style={{fontSize: 20, color: 'white'}}>Submit</Text>
       </TouchableOpacity>
       <TouchableOpacity
