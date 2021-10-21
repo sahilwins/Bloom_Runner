@@ -82,11 +82,8 @@ const Home = ({navigation}) => {
           navigation.navigate('Forgot');
         }}
         style={styles.flowfassword}>
-          <View style={{alignItems:'flex-end'}}>
-        <Text
-          style={{fontSize: 20, color: 'black',}}>
-          Forgot Password
-        </Text>
+        <View style={{alignItems: 'flex-end'}}>
+          <Text style={{fontSize: 20, color: 'black'}}>Forgot Password</Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -130,6 +127,5 @@ const styles = StyleSheet.create({
     fontSize: 40,
     borderRadius: 20,
     height: 40,
-    
   },
 });

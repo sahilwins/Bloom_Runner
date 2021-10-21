@@ -13,6 +13,8 @@ import {
 } from 'react-native-paper';
 import {DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import LoginFF from './LoginFF';
 
 const Drawercontent = ({navigation}) => {
@@ -25,6 +27,8 @@ const Drawercontent = ({navigation}) => {
             <View style={{marginLeft: 15}}>
               <Title>Kevin sharma</Title>
               <Caption> @Indian</Caption>
+              <Text>ID No.997</Text>
+              <Text style={{marginTop:3}}>phone No.997546637</Text>
             </View>
           </View>
         </View>
@@ -42,24 +46,24 @@ const Drawercontent = ({navigation}) => {
 
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <AntDesign name="setting" color={color} size={size} />
             )}
-            label="Home"
+            label="Setting"
             onPress={() => {}}
           />
 
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <Entypo name="user" color={color} size={size} />
             )}
-            label="Home"
+            label="Profile"
             onPress={() => {
               navigation.navigate('Profile');
             }}
           />
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <Entypo name="log-out" color={color} size={size} />
             )}
             label="LogOut"
             onPress={() => {
