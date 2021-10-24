@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, SafeAreaView} from 'react-native';
+import {StyleSheet, View, SafeAreaView, Image} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {
   Avatar,
@@ -53,7 +53,11 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
         <Drawer.Section style={styles.drawersect}>
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              //<Icon name="home" color={color} size={size} />
+              <Image
+                source={require('../../assets/dashboard.png')}
+                style={{width: 30, height: 30}}
+              />
             )}
             label="Dashbord"
             onPress={() => {}}
@@ -61,7 +65,10 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
 
           <DrawerItem
             icon={({color, size}) => (
-              <AntDesign name="setting" color={color} size={size} />
+              <Image
+                source={require('../../assets/booking.png')}
+                style={{width: 30, height: 30}}
+              />
             )}
             label="My Booking"
             onPress={() => {}}
@@ -69,7 +76,10 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
 
           <DrawerItem
             icon={({color, size}) => (
-              <Entypo name="user" color={color} size={size} />
+              <Image
+                source={require('../../assets/user.png')}
+                style={{width: 30, height: 30}}
+              />
             )}
             label="My Profile"
             onPress={() => {
@@ -78,7 +88,10 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
           />
           <DrawerItem
             icon={({color, size}) => (
-              <Entypo name="log-out" color={color} size={size} />
+              <Image
+                source={require('../../assets/logout.png')}
+                style={{width: 30, height: 30}}
+              />
             )}
             label="Logout"
             onPress={() => {

@@ -28,6 +28,7 @@ const LoginFF = () => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   flexDirection: 'row',
+                  width: 250,
                 }}>
                 <Image
                   style={{height: 40, width: 40}}
@@ -37,7 +38,7 @@ const LoginFF = () => {
                   style={{
                     color: 'white',
                     fontSize: 19,
-                    width: 260,
+
                     height: 50,
                     alignItems: 'center',
                     alignSelf: 'center',
