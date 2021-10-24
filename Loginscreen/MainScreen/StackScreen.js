@@ -33,11 +33,7 @@ const FirstScreen = () => {
       <Stack.Screen name="Splashscreen" component={Splashscreen} />
       <Stack.Screen component={Home} name="home" />
       <Stack.Screen component={Newpass} name="Newpass" />
-      <Stack.Screen
-        component={LoginFF}
-        name="LoginFF"
-       
-      />
+      <Stack.Screen component={LoginFF} name="LoginFF" />
       <Stack.Screen component={Forgot} name="Forgot" />
     </Stack.Navigator>
   );

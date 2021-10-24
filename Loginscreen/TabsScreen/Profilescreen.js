@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,8 +7,25 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-
-const Profilescreen = () => {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {attemptBookingActions} from '../actions/Booging';
+import AppBg from '../MainScreen/AppBg';
+const Profilescreen = ({
+  attemptBooking,
+  navigation,
+  bookingData,
+  bookingFetching,
+}) => {
+  useEffect(() => {
+    attemptBooking({
+      user_id: 10073,
+      extraData: async loginRespo => {
+        console.log('booking', loginRespo);
+      },
+    });
+  }, []);
+  console.log('bookingData', bookingData);
   const Data = [
     {
       name: 'Contico shipping agency',
@@ -41,104 +58,77 @@ const Profilescreen = () => {
   ];
   return (
     <View style={{flex: 1, justifyContent: 'center'}}>
-      <View style={styles.toView}>
-        <View
-          style={{
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexDirection: 'row',
-            paddingHorizontal: 20,
-          }}>
-          <Image
-            style={styles.tinyLogo}
-            source={require('../../assets/logo.png')}
-          />
-          <View style={{}}>
-            <Text
-              style={{
-                textAlign: 'center',
-                justifyContent: 'center',
-                fontWeight: 'bold',
-                fontSize: 19,
-              }}>
-              CONTICO SHIPPING AGENCY
-            </Text>
-            <Text
-              style={{
-                textAlign: 'center',
-                justifyContent: 'center',
-                fontWeight: 'bold',
-                fontSize: 19,
-              }}>
-              PRIVATE LIMITED
-            </Text>
-          </View>
+      <AppBg
+        navigation={navigation}
+        showHeader={false}
+        loading={bookingFetching}>
+        <View style={styles.toView}>
+          <Text
+            style={{
+              textAlign: 'center',
+              justifyContent: 'center',
+              fontWeight: 'bold',
+              fontSize: 19,
+            }}>
+            YOUR UPCOMING BOOKINGS
+          </Text>
         </View>
-      </View>
-      <View
-        style={{
-          width: '100%',
-          height: 30,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Text>APPOINTMENTS CREATED FOR PAYMENTS</Text>
-      </View>
-      <View
-        style={{
-          width: '100%',
-          height: 80,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'gray',
-        }}>
-        <View
-          style={{
-            width: '100%',
-            height: 60,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: 'dodgerblue',
-          }}>
-          <Text>CLICK HERE TO BOOK ANOTHER APPOINTMENT</Text>
-          <Text>>>>>>>>></Text>
-        </View>
-      </View>
-      <FlatList
-        data={Data}
-        renderItem={({item}) => {
-          return (
-            <View style={styles.cardView}>
-              <View style={styles.firstView}>
-                <Image source={require('../../assets/B35D.png')} />
-              </View>
-              <View style={styles.secondView}>
-                <View
-                  style={{
-                    paddingLeft: 25,
-                    justifyContent: 'space-around',
-                    flex: 1,
-                  }}>
-                  <Text>{item.name}</Text>
-                  <Text>Shipping :{item.clinic}</Text>
-                  <Text>Invoice no :{item.invoic}</Text>
-                  <Text>Appointment Date{item.date}</Text>
+
+        <FlatList
+          data={bookingData}
+          renderItem={({item}) => {
+            return (
+              <View style={styles.cardView}>
+                <View style={styles.firstView}>
+                  <Image source={require('../../assets/B35D.png')} />
                 </View>
-                <View style={styles.butonView}>
-                  <TouchableOpacity>
-                    <Text style={styles.payNow}>{item.paid}</Text>
-                  </TouchableOpacity>
+                <View style={styles.secondView}>
+                  <View
+                    style={{
+                      paddingLeft: 5,
+                      // justifyContent: 'space-around',
+                      flex: 1,
+                    }}>
+                    <Text style={styles.textstyle}>
+                      BOOKING ID : {item.BOOKING_ID}
+                    </Text>
+                    <Text style={styles.textstyle}>
+                      PLACE OF RECEIPT : {item.PLACE_OF_RECEIPT}
+                    </Text>
+                    <Text style={styles.textstyle}>
+                      PLACE OF DELIVERY : {item.PLACE_OF_DELIVERY}
+                    </Text>
+                    <Text style={styles.textstyle}>
+                      PICKUP DATE : {item.PICKUP_DATE}
+                    </Text>
+                    <Text style={styles.textstyle}>
+                      {' '}
+                      GOODS : {item.GOODS_TYPE}
+                    </Text>
+                  </View>
+                  <View style={styles.butonView}>
+                    <TouchableOpacity>
+                      <Text style={styles.payNow}>View Details</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
               </View>
-            </View>
-          );
-        }}
-      />
+            );
+          }}
+        />
+      </AppBg>
     </View>
   );
 };
 
-export default Profilescreen;
+const mapStateToProps = function (state) {
+  return {
+    ...state.bookingReducer,
+  };
+};
+export default connect(mapStateToProps, dispatch => ({
+  attemptBooking: bindActionCreators(attemptBookingActions.start, dispatch),
+}))(Profilescreen);
 
 const styles = StyleSheet.create({
   tinyLogo: {
@@ -149,7 +139,7 @@ const styles = StyleSheet.create({
   cardView: {
     flex: 1,
     width: '100%',
-    height: 150,
+    //  height: 150,
     flexDirection: 'row',
     // justifyContent: 'center',
     // alignItems: 'center',
@@ -167,18 +157,30 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     backgroundColor: 'lightgrey',
   },
+  textstyle: {
+    //fontWeight: 'bold',
+    fontSize: 18,
+    margin: 3,
+  },
   payNow: {
     textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
   butonView: {
     backgroundColor: 'skyblue',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
     width: '100%',
+
+    height: 30,
   },
   toView: {
     justifyContent: 'center',
     paddingLeft: 20,
     width: '100%',
-    height: 100,
+    height: 60,
 
     backgroundColor: 'lightblue',
   },

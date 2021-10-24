@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, SafeAreaView} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {
@@ -16,19 +16,34 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import LoginFF from './LoginFF';
-
-const Drawercontent = ({navigation}) => {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {attemptprofileActions} from '../actions/userProfile';
+const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
+  useEffect(() => {
+    attemptUserProfile({
+      user_id: 10073,
+      extraData: async loginRespo => {
+        console.log('userData', loginRespo);
+      },
+    });
+  }, []);
+  console.log('userData', userData);
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.drawercontent}>
         <View style={styles.userinfo}>
           <View style={{flexDirection: 'row', marginTop: 15}}>
-            <Avatar.Image source={require('../../assets/logo.png')} />
+            <Avatar.Image
+              source={{
+                uri: userData[0]?.image,
+              }}
+            />
             <View style={{marginLeft: 15}}>
-              <Title>Kevin sharma</Title>
-              <Caption> @Indian</Caption>
-              <Text>ID No.997</Text>
-              <Text style={{marginTop:3}}>phone No.997546637</Text>
+              <Title>{userData[0]?.first_name + userData[0]?.last_name}</Title>
+              <Caption>{userData[0]?.company_name}</Caption>
+              <Text>ID No. {userData[0]?.id}</Text>
+              <Text style={{marginTop: 3}}>Phone No. {userData[0]?.phone}</Text>
             </View>
           </View>
         </View>
@@ -40,7 +55,7 @@ const Drawercontent = ({navigation}) => {
             icon={({color, size}) => (
               <Icon name="home" color={color} size={size} />
             )}
-            label="Home"
+            label="Dashbord"
             onPress={() => {}}
           />
 
@@ -48,7 +63,7 @@ const Drawercontent = ({navigation}) => {
             icon={({color, size}) => (
               <AntDesign name="setting" color={color} size={size} />
             )}
-            label="Setting"
+            label="My Booking"
             onPress={() => {}}
           />
 
@@ -56,7 +71,7 @@ const Drawercontent = ({navigation}) => {
             icon={({color, size}) => (
               <Entypo name="user" color={color} size={size} />
             )}
-            label="Profile"
+            label="My Profile"
             onPress={() => {
               navigation.navigate('Profile');
             }}
@@ -65,7 +80,7 @@ const Drawercontent = ({navigation}) => {
             icon={({color, size}) => (
               <Entypo name="log-out" color={color} size={size} />
             )}
-            label="LogOut"
+            label="Logout"
             onPress={() => {
               navigation.navigate('home');
             }}
@@ -76,7 +91,14 @@ const Drawercontent = ({navigation}) => {
   );
 };
 
-export default Drawercontent;
+const mapStateToProps = function (state) {
+  return {
+    ...state.userProfileReducer,
+  };
+};
+export default connect(mapStateToProps, dispatch => ({
+  attemptUserProfile: bindActionCreators(attemptprofileActions.start, dispatch),
+}))(Drawercontent);
 
 const styles = StyleSheet.create({
   drawercontent: {

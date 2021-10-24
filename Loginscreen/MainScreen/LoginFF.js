@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, Image, SafeAreaView, View} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Profilescreen from '../TabsScreen/Profilescreen';
 import Screennotification from '../TabsScreen/Screennotification';
@@ -19,11 +19,35 @@ const LoginFF = () => {
             <SafeAreaView
               style={{
                 flex: 1,
-                backgroundColor:'purple',
+                backgroundColor: '#3d7490',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={{color:'white',fontSize:19,fontWeight:'bold'}}>CMC Patient Portal</Text>
+              <View
+                style={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                }}>
+                <Image
+                  style={{height: 40, width: 40}}
+                  source={require('../../assets/logo.png')}
+                />
+                <Text
+                  style={{
+                    color: 'white',
+                    fontSize: 19,
+                    width: 260,
+                    height: 50,
+                    alignItems: 'center',
+                    alignSelf: 'center',
+                    textAlign: 'center',
+
+                    fontWeight: 'bold',
+                  }}>
+                  CONTICO SHIPPING AGENCY PRIVATE LIMITED
+                </Text>
+              </View>
             </SafeAreaView>
           ),
         }}
