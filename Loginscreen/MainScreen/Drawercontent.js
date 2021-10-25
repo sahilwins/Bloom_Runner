@@ -19,6 +19,7 @@ import LoginFF from './LoginFF';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {attemptprofileActions} from '../actions/userProfile';
+import {AppStorage, key} from '../AsynStorage/asyncStorage';
 const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
   useEffect(() => {
     attemptUserProfile({
@@ -28,6 +29,11 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
       },
     });
   }, []);
+
+  const onPress = () => {
+    navigation.navigate('home');
+    AppStorage.removeItemKey(key.SAVE_CLIENT_ID);
+  };
   console.log('userData', userData);
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -94,9 +100,7 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
               />
             )}
             label="Logout"
-            onPress={() => {
-              navigation.navigate('home');
-            }}
+            onPress={() => onPress()}
           />
         </Drawer.Section>
       </ScrollView>

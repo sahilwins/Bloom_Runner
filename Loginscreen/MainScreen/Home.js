@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -15,10 +15,13 @@ import {bindActionCreators} from 'redux';
 import {attemptLoginActions} from '../actions/Login';
 import FastImage from 'react-native-fast-image';
 import AppBg from '../MainScreen/AppBg';
+import {AppStorage, key} from '../AsynStorage/asyncStorage';
 
 const Home = ({navigation, attemptLogin, loginFetching}) => {
   const iimage = require('../../assets/logo.png');
   const idea = require('../../assets/logo.png');
+
+  const loginUsername = useRef();
   const [data, setData] = useState({
     username: '',
     password: '',
@@ -31,7 +34,11 @@ const Home = ({navigation, attemptLogin, loginFetching}) => {
       password: 'ssp@2020', // getData.password,
 
       extraData: async loginRespo => {
-        console.log('loginRespo', loginRespo);
+        console.log('loginRespo', loginRespo?.user_id);
+        AppStorage.saveKey(
+          key.SAVE_CLIENT_ID,
+          JSON.stringify(loginRespo?.user_id),
+        );
         navigation.navigate('LoginFF');
       },
     });
@@ -69,6 +76,14 @@ const Home = ({navigation, attemptLogin, loginFetching}) => {
       return;
     }
     login(data);
+    submitHandler();
+  };
+
+  const submitHandler = () => {
+    setData({
+      username: '',
+      password: '',
+    });
   };
   return (
     <SafeAreaView style={styles.inst}>
@@ -101,6 +116,10 @@ const Home = ({navigation, attemptLogin, loginFetching}) => {
               style={{
                 flex: 1,
               }}
+              // onSubmitEditing={submitHandler}
+              textContentType="emailAddress"
+              clearButtonMode="always"
+              defaultValue={data.username}
               placeholder=" Enter your registered email"
               onChangeText={val => handleUsenameChange(val)}
               keyboardType={'email-address'}
