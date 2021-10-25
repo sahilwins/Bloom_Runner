@@ -79,9 +79,9 @@ const Profilescreen = ({
           renderItem={({item}) => {
             return (
               <View style={styles.cardView}>
-                <View style={styles.firstView}>
+                {/* <View style={styles.firstView}>
                   <Image source={require('../../assets/B35D.png')} />
-                </View>
+                </View> */}
                 <View style={styles.secondView}>
                   <View
                     style={{

@@ -22,7 +22,6 @@ export function* handleLoginRequest(action) {
       alert(response.data.message);
     }
   } catch (error) {
-    console.log('api error', error);
     yield put(attemptLoginActions.failure(error));
     if (error.message === 'Request failed with status code 401') {
       Alert.alert('Email or password is wrong');
