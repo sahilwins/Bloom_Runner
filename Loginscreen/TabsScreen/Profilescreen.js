@@ -11,6 +11,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {attemptBookingActions} from '../actions/Booging';
 import AppBg from '../MainScreen/AppBg';
+import {AppStorage} from '../AsynStorage/asyncStorage';
+
 const Profilescreen = ({
   attemptBooking,
   navigation,
@@ -18,8 +20,10 @@ const Profilescreen = ({
   bookingFetching,
 }) => {
   useEffect(() => {
+    const client_Id = await AppStorage.getClientId();
+    console.log('client id here under console', client_Id);
     attemptBooking({
-      user_id: 10073,
+      user_id: client_Id,
       extraData: async loginRespo => {
         console.log('booking', loginRespo);
       },
