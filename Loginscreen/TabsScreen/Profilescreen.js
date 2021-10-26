@@ -21,7 +21,7 @@ const Profilescreen = ({
 }) => {
   useEffect(async () => {
     const client_Id = await AppStorage.getClientId();
-    console.log('client id here under console', client_Id);
+    console.log('client id here under console1', client_Id);
     attemptBooking({
       user_id: client_Id,
       extraData: async loginRespo => {
