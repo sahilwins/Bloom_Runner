@@ -19,7 +19,7 @@ const Profilescreen = ({
   bookingData,
   bookingFetching,
 }) => {
-  useEffect(() => {
+  useEffect(async () => {
     const client_Id = await AppStorage.getClientId();
     console.log('client id here under console', client_Id);
     attemptBooking({

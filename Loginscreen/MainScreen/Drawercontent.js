@@ -21,7 +21,7 @@ import {bindActionCreators} from 'redux';
 import {attemptprofileActions} from '../actions/userProfile';
 import {AppStorage, key} from '../AsynStorage/asyncStorage';
 const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
-  useEffect(() => {
+  useEffect(async () => {
     const client_Id = await AppStorage.getClientId();
     console.log('client id here under console', client_Id);
     attemptUserProfile({
