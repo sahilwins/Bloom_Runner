@@ -74,7 +74,7 @@ const Profilescreen = ({
               fontWeight: 'bold',
               fontSize: 19,
             }}>
-            YOUR UPCOMING BOOKINGS
+             Upcoming Booking
           </Text>
         </View>
 
