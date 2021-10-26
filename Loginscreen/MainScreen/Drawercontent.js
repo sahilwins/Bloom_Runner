@@ -46,10 +46,16 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
               }}
             />
             <View style={{marginLeft: 15}}>
-              <Title>{userData[0]?.first_name + userData[0]?.last_name}</Title>
-              <Caption>{userData[0]?.company_name}</Caption>
-              <Text>ID No. {userData[0]?.id}</Text>
-              <Text style={{marginTop: 3}}>Phone No. {userData[0]?.phone}</Text>
+              <Title style={{fontSize: 15}}>
+                {userData[0]?.first_name + userData[0]?.last_name}
+              </Title>
+              <Caption style={{fontSize: 15}}>
+                {userData[0]?.company_name}
+              </Caption>
+              <Text style={{fontSize: 15}}>ID No. {userData[0]?.id}</Text>
+              <Text style={{marginTop: 3, fontSize: 15}}>
+                Phone No. {userData[0]?.phone}
+              </Text>
             </View>
           </View>
         </View>
@@ -89,7 +95,7 @@ const Drawercontent = ({navigation, attemptUserProfile, userData}) => {
             )}
             label="My Profile"
             onPress={() => {
-              navigation.navigate('Profile');
+              navigation.navigate('Home');
             }}
           />
           <DrawerItem
@@ -119,7 +125,9 @@ export default connect(mapStateToProps, dispatch => ({
 
 const styles = StyleSheet.create({
   drawercontent: {
-    flex: 1,
+    // flex: 1,
+    height: 150,
+    //backgroundColor: 'red',
   },
   userinfo: {
     paddingLeft: 20,

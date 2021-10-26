@@ -31,8 +31,8 @@ const LoginFF = () => {
                   width: 250,
                 }}>
                 <Image
-                  style={{height: 40, width: 40}}
-                  source={require('../../assets/logo.png')}
+                  style={{height: 30, width:'100%'}}
+                  source={require('../../assets/header.png')}
                 />
                 <Text
                   style={{
@@ -46,7 +46,7 @@ const LoginFF = () => {
 
                     fontWeight: 'bold',
                   }}>
-                  CONTICO SHIPPING AGENCY PRIVATE LIMITED
+                  {/* CONTICO SHIPPING AGENCY PRIVATE LIMITED */}
                 </Text>
               </View>
             </SafeAreaView>
