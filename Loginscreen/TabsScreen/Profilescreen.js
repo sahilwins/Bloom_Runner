@@ -74,7 +74,7 @@ const Profilescreen = ({
               fontWeight: 'bold',
               fontSize: 19,
             }}>
-            YOUR UPCOMING BOOKINGS
+             Upcoming Booking
           </Text>
         </View>
 
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     //fontWeight: 'bold',
     fontSize: 18,
     margin: 3,
+    color:'black'
   },
   payNow: {
     textAlign: 'center',

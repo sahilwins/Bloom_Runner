@@ -19,7 +19,7 @@ const LoginFF = () => {
             <SafeAreaView
               style={{
                 flex: 1,
-                backgroundColor: '#3d7490',
+                backgroundColor: 'white',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
