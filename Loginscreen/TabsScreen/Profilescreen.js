@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     //fontWeight: 'bold',
     fontSize: 18,
     margin: 3,
+    color:'black'
   },
   payNow: {
     textAlign: 'center',
